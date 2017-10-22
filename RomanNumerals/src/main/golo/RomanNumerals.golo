@@ -3,15 +3,9 @@ module romannumerals
 import java.lang.Integer
 
 function arabicToRoman = |num| {
-    if(num == 1){
-        return "I"
-    }else if(num == 2){
-        return "II"
-    }else if(num == 3){
-        return "III"
-    }else if(num == 5){
-        return "V"
-    }else {return null}
+    let numbers = array["I", "II", "III", null, "V"]
+
+    return numbers: get(num - 1)
 
 }
 
