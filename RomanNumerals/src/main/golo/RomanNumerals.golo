@@ -5,6 +5,11 @@ import java.lang.Integer
 function arabicToRoman = |num| {
     let ones = array["I", "II", "III", "IV", "V", "IX"]
     let tens = array["X", "L"]
+    return elaborateTraduction(num, tens, ones)
+
+}
+
+function elaborateTraduction = |num, tens, ones|{
     var  right = num % 10
     var left = num - right
     var res = ""
@@ -26,6 +31,7 @@ function arabicToRoman = |num| {
         }
     }
     return res
+
 }
 
 function main = |args|{
