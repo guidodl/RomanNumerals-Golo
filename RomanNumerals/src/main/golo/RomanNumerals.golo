@@ -4,7 +4,7 @@ import java.lang.Integer
 
 function arabicToRoman = |num| {
     let ones = map[[1, "I"], [4, "IV"], [5, "V"], [9, "IX"]]
-    let tens = map[[10, "X"], [40, "XL"], [50, "L"]]
+    let tens = map[[10, "X"], [40, "XL"], [50, "L"], [90, "XC"], [100, "C"]]
     return elaborateTraduction(num, tens, ones)
 
 }
@@ -12,37 +12,43 @@ function arabicToRoman = |num| {
 function elaborateTraduction = |num, tens, ones|{
     var  right = num % 10
     var left = num - right
-    var res = ""
-
-    if(left < 40){
-        res = lessThanForty(left, tens)
-    }else{
-        res = res + tens: get(left)
-    }
-
-    while(right != 0){
-        if(right >= 5 and right < 9){
-            res = res + ones: get(5)
-            right = right - 5
-        }else{
-            if(right < 4){
-                for(var i = 0, i < right, i = i + 1){
-                    res = res + ones: get(1)
-                }
-            }else{
-                res = res + ones: get(right)
-            }
-            right = 0
-        }
-    }
+    var res = elaborateTens(left, tens) + elaborateOnes(right, ones)
     return res
 
 }
 
-function lessThanForty = |left, tens|{
+function elaborateTens = |left, tens|{
+    var l = left
     var res = ""
-    for(var i = 0, i < left / 10, i = i + 1){
-        res = res + tens: get(10)
+    while(l != 0){
+        if(l < 40 and l != 0){
+            res = res + tens: get(10)
+            l = l - 10
+        }else if(l >= 50 and l < 90){
+            res = res + tens: get(50)
+            l = l - 50
+        }else{
+            res = res + tens: get(l)
+            l = 0
+        }
+    }
+    return res
+}
+
+function elaborateOnes = |right, ones|{
+    var r = right
+    var res = ""
+    while(r != 0){
+        if(r >= 5 and r < 9){
+            res = res + ones: get(5)
+            r = r - 5
+        }else if(r < 4){
+            res = res + ones: get(1)
+            r = r - 1
+        }else{
+            res = res + ones: get(r)
+            r = 0
+        }
     }
     return res
 }
