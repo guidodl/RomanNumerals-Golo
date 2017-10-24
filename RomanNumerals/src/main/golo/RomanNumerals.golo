@@ -1,62 +1,84 @@
 module romannumerals
 
 import java.lang.Integer
+import java.lang.String
+import java.lang.Character
 
 function arabicToRoman = |num| {
-    let ones = map[[1, "I"], [4, "IV"], [5, "V"], [9, "IX"]]
-    let tens = map[[10, "X"], [40, "XL"], [50, "L"], [90, "XC"], [100, "C"]]
-    return elaborateTraduction(num, tens, ones)
+    let ones = array["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"]
+    let tens = array["X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"]
+    let hundreds = array["C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"]
+    return elaborateTraduction(num, hundreds, tens, ones)
 
 }
 
-function elaborateTraduction = |num, tens, ones|{
-    var  right = num % 10
-    var left = num - right
-    var res = elaborateTens(left, tens) + elaborateOnes(right, ones)
-    return res
+function elaborateTraduction = |num, hundreds, tens, ones|{
+    let numbers = numberParsing(num)
+    var o = numbers: get(3)
+    var t = numbers: get(2)
+    var hun = numbers: get(1)
+    var thousand = numbers: get(0)
 
-}
-
-function elaborateTens = |left, tens|{
-    var l = left
     var res = ""
-    while(l != 0){
-        if(l < 40 and l != 0){
-            res = res + tens: get(10)
-            l = l - 10
-        }else if(l >= 50 and l < 90){
-            res = res + tens: get(50)
-            l = l - 50
-        }else{
-            res = res + tens: get(l)
-            l = 0
-        }
+    for(var i = 0, i < thousand, i = i + 1){
+        res = res + "M"
+    }
+    return res + elaborateHundreds(hun, hundreds) + elaborateTens(t, tens) + elaborateOnes(o, ones)
+
+}
+
+function elaborateHundreds = |hun, hundreds|{
+    var res = ""
+    if(hun != 0){
+        res = hundreds: get(hun - 1)
     }
     return res
 }
 
-function elaborateOnes = |right, ones|{
-    var r = right
+function elaborateTens = |t, tens|{
     var res = ""
-    while(r != 0){
-        if(r >= 5 and r < 9){
-            res = res + ones: get(5)
-            r = r - 5
-        }else if(r < 4){
-            res = res + ones: get(1)
-            r = r - 1
-        }else{
-            res = res + ones: get(r)
-            r = 0
-        }
+    if(t != 0){
+        res = tens: get(t - 1)
     }
     return res
+}
+
+function elaborateOnes = |units, ones|{
+    var res = ""
+    if(units != 0){
+        res = ones: get(units - 1)
+    }
+    return res
+}
+
+function numberParsing = |num|{
+    let numStr = Integer.toString(num)
+    var o = 0
+    var t = 0
+    var hun = 0
+    var thousand = 0
+    if(numStr: length() >= 1){
+        o = Character.getNumericValue(numStr: charAt(numStr: length() - 1))
+    }
+    if(numStr: length() >= 2){
+        t = Character.getNumericValue(numStr: charAt(numStr: length() - 2))
+    }
+    if(numStr: length() >= 3){
+        hun = Character.getNumericValue(numStr: charAt(numStr: length() - 3))
+    }
+    if(numStr: length() >= 4){
+        thousand = Character.getNumericValue(numStr: charAt(numStr: length() - 4))
+    }
+    let numbers = array[thousand, hun, t, o]
+    return numbers
 }
 
 function main = |args|{
     if(args: length() != 0){
         let res = arabicToRoman(Integer.parseInt(args: get(0)))
-        println(res)
+        println(args: get(0) + " is " + res + " in Roman Numerals")
+
+
     }
 }
 
