@@ -15,11 +15,12 @@ repositories {
 }
 
 dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
     golo 'org.eclipse.golo:golo:3.2.0'
 }
 
 
 golo {
-    mainModule = 'Romannumerals'
+    mainModule = 'RomanNumerals'
 }
 

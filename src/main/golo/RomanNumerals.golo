@@ -1,8 +1,4 @@
-module romannumerals
-
-import java.lang.Integer
-import java.lang.String
-import java.lang.Character
+module RomanNumerals
 
 function arabicToRoman = |num| {
     let ones = array["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"]
@@ -81,6 +77,8 @@ function main = |args|{
 
     }
 }
+
+
 
 
 
