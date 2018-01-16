@@ -2,8 +2,6 @@ module RomanTest
 
 import RomanNumerals
 import org.hamcrest
-import org.assertj.core.api
-import org.junit
 import org.junit.Assert
 
 
@@ -16,81 +14,80 @@ import org.junit.Assert
     @Test
     function test_OneTwoThree = {
         assertEquals(arabicToRoman(1),"I")
-        assertThat(arabicToRoman(2)): isEqualTo("II")
-        assertThat(arabicToRoman(3)): isEqualTo("III")
+        assertEquals(arabicToRoman(2),"II")
+        assertEquals(arabicToRoman(3),"III")
     }
 
 	@Test
 	function five = {
-		assertThat(arabicToRoman(5)): isEqualTo("V")
+		assertEquals(arabicToRoman(5),"V")
 	}
 
 	@Test
 	function tenFifty = {
-		assertThat(arabicToRoman(10)): isEqualTo("X")
-		assertThat(arabicToRoman(50)): isEqualTo("L")
+		assertEquals(arabicToRoman(10),"X")
+		assertEquals(arabicToRoman(50),"L")
 	}
 
 
 	
 	@Test
 	function fourNineFourtynine = {
-		assertThat(arabicToRoman(4)): isEqualTo("IV")
-		assertThat(arabicToRoman(9)): isEqualTo("IX")
+		assertEquals(arabicToRoman(4),"IV")
+		assertEquals(arabicToRoman(9),"IX")
 	}
 
 
 	
 	@Test
 	function sixSevenEight = {
-		assertThat(arabicToRoman(6)): isEqualTo("VI")
-		assertThat(arabicToRoman(7)): isEqualTo("VII")
-		assertThat(arabicToRoman(8)): isEqualTo("VIII")
+		assertEquals(arabicToRoman(6),"VI")
+		assertEquals(arabicToRoman(7),"VII")
+		assertEquals(arabicToRoman(8),"VIII")
 	}
 
 
-	
 	@Test
 	function twelveFourteen = {
-		assertThat(arabicToRoman(12)): isEqualTo("XII")
-		assertThat(arabicToRoman(14)): isEqualTo("XIV")
+		assertEquals(arabicToRoman(12),"XII")
+		assertEquals(arabicToRoman(14),"XIV")
 	}
 
 
 	
 	@Test
 	function twentySixEightythree = {
-		assertThat(arabicToRoman(26)): isEqualTo("XXVI")
-		assertThat(arabicToRoman(83)): isEqualTo("LXXXIII")
+		assertEquals(arabicToRoman(26),"XXVI")
+		assertEquals(arabicToRoman(83),"LXXXIII")
 	}
 
 
 	
 	@Test
 	function fourtyFourtythreeFourtyFive = {
-		assertThat(arabicToRoman(40)): isEqualTo("XL")
-		assertThat(arabicToRoman(43)): isEqualTo("XLIII")
-		assertThat(arabicToRoman(45)): isEqualTo("XLV")
-		assertThat(arabicToRoman(49)): isEqualTo("XLIX")
+		assertEquals(arabicToRoman(40),"XL")
+		assertEquals(arabicToRoman(43),"XLIII")
+		assertEquals(arabicToRoman(45),"XLV")
+		assertEquals(arabicToRoman(49),"XLIX")
 	}
 
 
 	
 	@Test
 	function oneHundredFivehundredOnethousand = {
-		assertThat(arabicToRoman(100)): isEqualTo("C")
-		assertThat(arabicToRoman(500)): isEqualTo("D")
-		assertThat(arabicToRoman(1000)): isEqualTo("M")
+		assertEquals(arabicToRoman(100),"C")
+		assertEquals(arabicToRoman(500),"D")
+		assertEquals(arabicToRoman(1000),"M")
 	}
 
 
 	
 	@Test
 	function mixSix = {
-		assertThat(arabicToRoman(96)): isEqualTo("XCVI")
-		assertThat(arabicToRoman(496)): isEqualTo("CDXCVI")
-		assertThat(arabicToRoman(996)): isEqualTo("CMXCVI")
-		assertThat(arabicToRoman(2996)): isEqualTo("MMCMXCVI")
+		assertEquals(arabicToRoman(96),"XCVI")
+		assertEquals(arabicToRoman(496),"CDXCVI")
+		assertEquals(arabicToRoman(996),"CMXCVI")
+		assertEquals(arabicToRoman(2996),"MMCMXCVI")
 	}
 
 
@@ -99,55 +96,52 @@ import org.junit.Assert
 	
 	@Test
 	function mixArabicToRoman = {
-		assertThat(arabicToRoman(1223)): isEqualTo("MCCXXIII")
-		assertThat(arabicToRoman(1999)): isEqualTo("MCMXCIX")
-		assertThat(arabicToRoman(2781)): isEqualTo("MMDCCLXXXI")
-		assertThat(arabicToRoman(321)): isEqualTo("CCCXXI")
-		assertThat(arabicToRoman(3266)): isEqualTo("MMMCCLXVI")
-		assertThat(arabicToRoman(1211)): isEqualTo("MCCXI")
-		assertThat(arabicToRoman(1207)): isEqualTo("MCCVII")
+		assertEquals(arabicToRoman(1223),"MCCXXIII")
+		assertEquals(arabicToRoman(1999),"MCMXCIX")
+		assertEquals(arabicToRoman(2781),"MMDCCLXXXI")
+		assertEquals(arabicToRoman(321),"CCCXXI")
+		assertEquals(arabicToRoman(3266),"MMMCCLXVI")
+		assertEquals(arabicToRoman(1211),"MCCXI")
+		assertEquals(arabicToRoman(1207),"MCCVII")
 	}
 
 
 	
 	@Test
-	function mixRomanToArabic = {
-		assertThat(romanToArabic("I")): isEqualTo(1)
-		assertThat(romanToArabic("II")): isEqualTo(2)
-		assertThat(romanToArabic("III")): isEqualTo(3)
-		assertThat(romanToArabic("IV")): isEqualTo(4)
-		assertThat(romanToArabic("V")): isEqualTo(5)
-		assertThat(romanToArabic("VI")): isEqualTo(6)
-		assertThat(romanToArabic("VII")): isEqualTo(7)
-		assertThat(romanToArabic("VIII")): isEqualTo(8)
-		assertThat(romanToArabic("IX")): isEqualTo(9)
-		assertThat(romanToArabic("X")): isEqualTo(10)
-		assertThat(romanToArabic("XI")): isEqualTo(11)
-		assertThat(romanToArabic("XII")): isEqualTo(12)
-		assertThat(romanToArabic("XIII")): isEqualTo(13)
-		assertThat(romanToArabic("XIV")): isEqualTo(14)
-		assertThat(romanToArabic("XV")): isEqualTo(15)
+    function mixRomanToArabic = {
+		assertEquals(romanToArabic("I"),1)
+		assertEquals(romanToArabic("II"),2)
+		assertEquals(romanToArabic("III"),3)
+		assertEquals(romanToArabic("IV"),4)
+		assertEquals(romanToArabic("V"),5)
+		assertEquals(romanToArabic("VI"),6)
+		assertEquals(romanToArabic("VII"),7)
+		assertEquals(romanToArabic("VIII"),8)
+		assertEquals(romanToArabic("IX"),9)
+		assertEquals(romanToArabic("X"),10)
+		assertEquals(romanToArabic("XI"),11)
+		assertEquals(romanToArabic("XII"),12)
+		assertEquals(romanToArabic("XIII"),13)
+		assertEquals(romanToArabic("XIV"),14)
+		assertEquals(romanToArabic("XV"),15)
 
-		assertThat(romanToArabic("XL")): isEqualTo(40)
-		assertThat(romanToArabic("L")): isEqualTo(50)
-		assertThat(romanToArabic("XC")): isEqualTo(90)
-		assertThat(romanToArabic("C")): isEqualTo(100)
-		assertThat(romanToArabic("CD")): isEqualTo(400)
-		assertThat(romanToArabic("D")): isEqualTo(500)
-		assertThat(romanToArabic("CM")): isEqualTo(900)
-		assertThat(romanToArabic("M")): isEqualTo(1000)
+		assertEquals(romanToArabic("XL"),40)
+		assertEquals(romanToArabic("L"),50)
+		assertEquals(romanToArabic("XC"),90)
+		assertEquals(romanToArabic("C"),100)
+		assertEquals(romanToArabic("CD"),400)
+		assertEquals(romanToArabic("D"),500)
+		assertEquals(romanToArabic("CM"),900)
+		assertEquals(romanToArabic("M"),1000)
 
-		assertThat(romanToArabic("MCCXXIII")): isEqualTo(1223)
-		assertThat(romanToArabic("MCMXCIX")): isEqualTo(1999)
-		assertThat(romanToArabic("MMDCCLXXXI")): isEqualTo(2781)
-		assertThat(romanToArabic("CCCXXI")): isEqualTo(321)
-		assertThat(romanToArabic("MCCXI")): isEqualTo(1211)
-		assertThat(romanToArabic("MCCVII")): isEqualTo(1207)
+		assertEquals(romanToArabic("MCCXXIII"),1223)
+		assertEquals(romanToArabic("MCMXCIX"),1999)
+		assertEquals(romanToArabic("MMDCCLXXXI"),2781)
+		assertEquals(romanToArabic("CCCXXI"),321)
+		assertEquals(romanToArabic("MCCXI"),1211)
+		assertEquals(romanToArabic("MCCVII"),1207)
 	}
 
 
-    function main = |args| {
-        println(test_OneTwoThree())
-        #org.junit.runner.JUnitCore.main(test_OneTwoThree())
-    }
+
 

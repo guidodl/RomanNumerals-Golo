@@ -69,14 +69,14 @@ function numberParsing = |num|{
     return numbers
 }
 
-function main = |args|{
-    if(args: length() != 0){
-        let res = arabicToRoman(Integer.parseInt(args: get(0)))
-        println(args: get(0) + " is " + res + " in Roman Numerals")
+#function main = |args|{
+#   if(args: length() != 0){
+#      let res = arabicToRoman(Integer.parseInt(args: get(0)))
+#      println(args: get(0) + " is " + res + " in Roman Numerals")
 
 
-    }
-}
+# }
+#}
 
 
 
